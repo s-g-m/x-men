@@ -1,8 +1,8 @@
 package server
 
 import (
-	"x-mers/config"
-	"x-mers/util/logs"
+	"x-men/config"
+	"x-men/util/logs"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/recover"

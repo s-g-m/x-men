@@ -1,4 +1,4 @@
-package routes
+package handlers
 
 import (
 	"net/http"
@@ -7,7 +7,7 @@ import (
 )
 
 func Health(c *fiber.Ctx) (err error) {
-	message := []byte(`{"message":"The service x-mens is active"}`)
+	message := []byte(`{"message":"The service x-men is active"}`)
 	c.Status(http.StatusOK).Send(message)
 	return
 }

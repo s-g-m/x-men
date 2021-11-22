@@ -1,6 +1,8 @@
 package main
 
-import "x-mers/server"
+import (
+	"x-men/server"
+)
 
 func main() {
 	server.RunServer()

@@ -2,7 +2,7 @@ package server
 
 import (
 	"net/http"
-	"x-mers/config"
+	"x-men/config"
 
 	"github.com/gofiber/fiber/v2"
 )
