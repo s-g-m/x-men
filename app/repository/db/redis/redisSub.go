@@ -22,8 +22,7 @@ type RedisSub struct {
 
 func NewRedisSub(repository Repository, uri, key string) RedisSub {
 	redis := redis.NewClient(&redis.Options{
-		Addr:     uri,
-		Password: key,
+		Addr: uri,
 	})
 	logs.Info("connected RedisSub")
 	return RedisSub{repository: repository, redis: redis}

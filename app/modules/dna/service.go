@@ -30,7 +30,7 @@ func (s service) IsMutant(dna []string) (isMutant bool, err error) {
 	count := 0
 
 	for i := 0; i < len(dna); i++ {
-		count += s.checkPosition(i, newDna)
+		count += s.validateSequencesByPosition(i, newDna)
 		if count > 1 {
 			isMutant = true
 			break
@@ -42,7 +42,7 @@ func (s service) IsMutant(dna []string) (isMutant bool, err error) {
 	return
 }
 
-func (s service) checkPosition(index int, newDna DNA) (count int) {
+func (s service) validateSequencesByPosition(index int, newDna DNA) (count int) {
 	channel := make(chan string, 2)
 	if index != newDna.size-1 {
 		channel = make(chan string, 6)

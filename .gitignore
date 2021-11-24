@@ -15,4 +15,5 @@
 .env
 .vscode
 .air.*
+*.yaml
 go.sum
