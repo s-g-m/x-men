@@ -36,5 +36,8 @@ func (r RedisPub) SaveDNA(dna []string, isMutant bool) (err error) {
 	}
 
 	err = r.redis.Publish(ctx, constant.ChannelNameSaveDNA, payload).Err()
+	if err != nil {
+		logs.Error("RedisPub.SaveDNA", err.Error())
+	}
 	return
 }

@@ -30,16 +30,16 @@ func NewRedisSub(repository Repository, uri, key string) RedisSub {
 
 func (r RedisSub) SaveDNA() {
 	subscriber := r.redis.Subscribe(ctx, constant.ChannelNameSaveDNA)
+	defer subscriber.Close()
 
 	dna := entity.Dna{}
-	for {
-		message, err := subscriber.ReceiveMessage(ctx)
-		if err != nil {
-			logs.Error("RedisSub.SaveDNA ReceiveMessage", err.Error())
-			continue
-		}
 
-		err = json.Unmarshal([]byte(message.Payload), &dna)
+	ch := subscriber.Channel()
+
+	for message := range ch {
+		logs.Info("saveDNA")
+
+		err := json.Unmarshal([]byte(message.Payload), &dna)
 		if err != nil {
 			logs.Error("RedisSub.SaveDNA Unmarshal", err.Error())
 			continue
